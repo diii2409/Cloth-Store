@@ -68,3 +68,12 @@
     duration-300 cursor-pointer;
 	}
 }
+
+:root {
+	--font-raleway-latin-normal: "Raleway Latin", sans-serif;
+	--font-raleway-vietnamese-normal: "Raleway Vietnamese", sans-serif;
+}
+
+body {
+  font-family: var(--font-raleway-latin-normal, --font-raleway-vietnamese-normal);
+}
