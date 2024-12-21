@@ -1,21 +1,8 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import {cn} from "@/lib/utils";
 import {ClerkProvider} from "@clerk/nextjs";
 import type {Metadata} from "next";
-import localFont from "next/font/local";
+import {raleway_latin_normal} from "./fonts";
 import "./globals.css";
-
-const raleway_latin_normal = localFont({
-	src: "./fonts/raleway_latin_normal.woff2",
-	variable: "--font-raleway-latin-normal",
-	weight: "100 900",
-});
-
-const raleway_vietnamese_normal = localFont({
-	src: "./fonts/raleway_vietnamese.woff2",
-	variable: "--font-raleway-vietnamese-normal",
-	weight: "100 900",
-});
 
 export const metadata: Metadata = {
 	title: {
@@ -31,14 +18,10 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<ClerkProvider>
-			<html lang="en" suppressHydrationWarning>
-				<body className={`${raleway_latin_normal.variable} antialiased`}>
-					<Header />
-					{children}
-					<Footer />
-				</body>
-			</html>
-		</ClerkProvider>
+		<html lang="en" suppressHydrationWarning>
+			<ClerkProvider>
+				<body className={cn("antialiased", raleway_latin_normal.className)}>{children}</body>
+			</ClerkProvider>
+		</html>
 	);
 }
